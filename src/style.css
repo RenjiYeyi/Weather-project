@@ -1,0 +1,74 @@
+body {
+  font-family: "Montserrat", sans-serif;
+  background: linear-gradient(
+    178deg,
+    rgba(201, 234, 252, 0.51) 14.9%,
+    rgba(139, 192, 216, 0.73) 80%
+  );
+  margin: 90px auto;
+}
+.searchsection {
+  text-align: right;
+}
+ul {
+  list-style: none;
+}
+.lupa {
+  color: #3d2c8d;
+  font-size: 20px;
+}
+.search {
+  background: #5c7aea;
+  color: #ffffff;
+  padding: 4px 10px;
+  border: 1px solid #5c7aea;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: 200ms all ease-in-out;
+}
+.search:hover {
+  background: transparent;
+  color: #5c7aea;
+}
+h1 {
+  margin: 20px auto;
+}
+h2 {
+  margin: 10px auto 30px auto;
+}
+.todayemoji {
+  font-size: 70px;
+  margin: 25px auto;
+}
+.iconmessage {
+  text-align: center;
+}
+.todayTemp {
+  font-size: 30px;
+  font-weight: 500;
+  margin: 20px auto;
+}
+.weeklyweather {
+  text-align: center;
+  margin: 30px auto;
+  font-size: 20px;
+  border-top: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+  padding: 20px;
+}
+.units {
+  text-decoration: none;
+}
+.currentPlace {
+  background: #5c7aea;
+  color: #ffffff;
+  padding: 4px 10px;
+  border: 1px solid #5c7aea;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: 200ms all ease-in-out;
+}
+.currentPlace:hover {
+  background: transparent;
+  color: #5c7aea;
+}

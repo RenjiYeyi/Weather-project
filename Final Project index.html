@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/5226d18127.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="src/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/moment"></script>
+    <title>Weather App</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="searchsection">
+        <i class="fas fa-search lupa"></i>
+        <form type="text" id="search-country">
+          <input
+            type="search"
+            name="countrysearch"
+            placeholder="Search for a country"
+            id="search-submit"
+          />
+          <button class="search">Search</button>
+        </form>
+        <button class="currentPlace">Current</button>
+      </div>
+      <h1 class="selectedcity">Mexico City</h1>
+      <h2>
+        Today/
+        <span class="currentday"> Friday </span>
+        <span class="currentHour">15:35</span>
+      </h2>
+      <div class="row currentconditions">
+        <div class="col iconmessage">
+          <i class="fas fa-sun todayemoji"></i>
+          <div class="weathermessage">Don´t forget you sunscreen</div>
+        </div>
+        <div class="col todayTemp">
+          <ul>
+            <li class="actualtemp">
+              <span class="temp"> 20</span>
+              <span>°C</span>
+              <!-- <span class="units">
+                <a href="#" id="celsius-link"> °C</a>
+                |
+                <a href="#" id="farenheit-link"> °F</a>
+              </span> -->
+            </li>
+            <li class="maxmintemp">
+              <span id="min-temp"> 13°C</span> /
+              <span id="max-temp"> 25°C </span>
+            </li>
+            <li class="description">Sunny</li>
+          </ul>
+        </div>
+        <div class="col">
+          <ul>
+            <li class="humidity">Humidity</li>
+            <li class="wind">Wind</li>
+            <li class="sunrise">Sunrise</li>
+            <li class="sunset">Sunset</li>
+          </ul>
+        </div>
+        <div class="col todayconditions">
+          <ul>
+            <li class="humiditydata">52%</li>
+            <li class="winddata">6 km/h</li>
+            <li class="sunrisedata">7:25</li>
+            <li class="sunsetdata">19:30</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row weeklyweather">
+        <div class="col">
+          <ul class="dayone">
+            <li class="dayonename">SAT</li>
+            <li class="dayoneemoji">
+              <i class="fas fa-sun"></i>
+            </li>
+            <li class="dayonemaxtemp">20°</li>
+            <li class="dayonemintemp">11°</li>
+          </ul>
+        </div>
+        <div class="col">
+          <ul class="daytwo">
+            <li class="daytwoname">SUN</li>
+            <li class="daytwoemoji">
+              <i class="fas fa-cloud-sun"></i>
+            </li>
+            <li class="daytwomaxtemp">18°</li>
+            <li class="daytwomintemp">8°</li>
+          </ul>
+        </div>
+        <div class="col">
+          <ul class="daythree">
+            <li class="daythreename">MON</li>
+            <li class="daythreeemoji">
+              <i class="fas fa-cloud-sun"></i>
+            </li>
+            <li class="daythreemaxtemp">15°</li>
+            <li class="daythreemintemp">7°</li>
+          </ul>
+        </div>
+        <div class="col">
+          <ul class="dayfour">
+            <li class="dayfourname">TUE</li>
+            <li class="dayfouremoji">
+              <i class="fas fa-cloud-showers-heavy"></i>
+            </li>
+            <li class="dayfourmaxtemp">15°</li>
+            <li class="dayfourmintemp">9°</li>
+          </ul>
+        </div>
+        <div class="col">
+          <ul class="dayfive">
+            <li class="dayfivename">WED</li>
+            <li class="dayfiveemoji">
+              <i class="fas fa-cloud-sun-rain"></i>
+            </li>
+            <li class="dayfivemaxtemp">17°</li>
+            <li class="dayfivemintemp">10°</li>
+          </ul>
+        </div>
+        <div class="col">
+          <ul class="daysix">
+            <li class="daysixname">THU</li>
+            <li class="daysixemoji">
+              <i class="fas fa-cloud-sun"></i>
+            </li>
+            <li class="daysixmaxtemp">22°</li>
+            <li class="daysixmintemp">13°</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script src="src/script.js"></script>
+  </body>
+</html>
