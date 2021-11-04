@@ -28,7 +28,7 @@ function countrySubmit(event) {
   let inputCountry = document.querySelector("#search-submit");
   countryselected.innerHTML = inputCountry.value;
   let apiKey = "de05d2165a75b7d0ec3dd658f8e8549c";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${inputCountry.value}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${inputCountry.value}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemperature);
 }
 let countryselected = document.querySelector(".selectedcity");
@@ -36,8 +36,9 @@ let form = document.querySelector("#search-country");
 form.addEventListener("submit", countrySubmit);
 
 function showTemperature(response) {
+  console.log(response);
   let todayTemp = document.querySelector(".temp");
-  todayTemp.innerHTML = Math.round(response.data.main.temp);
+  todayTemp.innerHTML = Math.round(response.data.list.temp);
   let minCurrentTemp = Math.round(response.data.main.temp_min);
   let minTodatTemp = document.querySelector("#min-temp");
   minTodatTemp.innerHTML = `${minCurrentTemp}°C`;
@@ -66,6 +67,7 @@ function showTemperature(response) {
   console.log(sunset);
   console.log(sunrise);
 }
+// Current button function beggining
 function currentLocation(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
@@ -82,7 +84,8 @@ function getCurrentPosition() {
 }
 
 let button = document.querySelector(".currentPlace");
-button.addEventListener("click", getCurrentPosition);
+button.addEventListener("click", getCurrentPosition); //Current button function ending
+
 // function celsiusChange(event) {
 //   event.preventDefault();
 //   let celsTemp = document.querySelector(".temp");
