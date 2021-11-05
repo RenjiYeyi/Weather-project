@@ -76,6 +76,14 @@ function showTemperature(queryParams) {
     currentCountry.innerHTML = response.data.name;
     console.log(sunset);
     console.log(sunrise);
+    document
+      .querySelector(".todayimage")
+      .setAttribute(
+        "src",
+        "http://openweathermap.org/img/w/" +
+          response.data.weather[0].icon +
+          ".png"
+      );
   });
   axios
     .get(
@@ -93,36 +101,84 @@ function showTemperature(queryParams) {
       let maxDayOneTemp = Math.round(response.data.list[1].main.temp_max);
       let maxOneTemp = document.querySelector(".dayonemaxtemp");
       maxOneTemp.innerHTML = `${maxDayOneTemp}°C`;
+      document
+        .querySelector(".dayoneimage")
+        .setAttribute(
+          "src",
+          "http://openweathermap.org/img/w/" +
+            response.data.list[1].weather[0].icon +
+            ".png"
+        );
       let minDayTwoTemp = Math.round(response.data.list[9].main.temp_min);
       let minTwoTemp = document.querySelector(".daytwomintemp");
       minTwoTemp.innerHTML = `${minDayTwoTemp}°C`;
       let maxDayTwoTemp = Math.round(response.data.list[9].main.temp_max);
       let maxTwoTemp = document.querySelector(".daytwomaxtemp");
       maxTwoTemp.innerHTML = `${maxDayTwoTemp}°C`;
+      document
+        .querySelector(".daytwoimage")
+        .setAttribute(
+          "src",
+          "http://openweathermap.org/img/w/" +
+            response.data.list[9].weather[0].icon +
+            ".png"
+        );
       let minDayThreeTemp = Math.round(response.data.list[17].main.temp_min);
       let minThreeTemp = document.querySelector(".daythreemintemp");
       minThreeTemp.innerHTML = `${minDayThreeTemp}°C`;
       let maxDayThreeTemp = Math.round(response.data.list[17].main.temp_max);
       let maxThreeTemp = document.querySelector(".daythreemaxtemp");
       maxThreeTemp.innerHTML = `${maxDayThreeTemp}°C`;
+      document
+        .querySelector(".daythreeimage")
+        .setAttribute(
+          "src",
+          "http://openweathermap.org/img/w/" +
+            response.data.list[17].weather[0].icon +
+            ".png"
+        );
       let minDayFourTemp = Math.round(response.data.list[25].main.temp_min);
       let minFourTemp = document.querySelector(".dayfourmintemp");
       minFourTemp.innerHTML = `${minDayFourTemp}°C`;
       let maxDayFourTemp = Math.round(response.data.list[25].main.temp_max);
       let maxFourTemp = document.querySelector(".dayfourmaxtemp");
       maxFourTemp.innerHTML = `${maxDayFourTemp}°C`;
+      document
+        .querySelector(".dayfourimage")
+        .setAttribute(
+          "src",
+          "http://openweathermap.org/img/w/" +
+            response.data.list[25].weather[0].icon +
+            ".png"
+        );
       let minDayFiveTemp = Math.round(response.data.list[33].main.temp_min);
       let minFiveTemp = document.querySelector(".dayfivemintemp");
       minFiveTemp.innerHTML = `${minDayFiveTemp}°C`;
       let maxDayFiveTemp = Math.round(response.data.list[33].main.temp_max);
       let maxFiveTemp = document.querySelector(".dayfivemaxtemp");
       maxFiveTemp.innerHTML = `${maxDayFiveTemp}°C`;
+      document
+        .querySelector(".dayfiveimage")
+        .setAttribute(
+          "src",
+          "http://openweathermap.org/img/w/" +
+            response.data.list[33].weather[0].icon +
+            ".png"
+        );
       let minDaySixTemp = Math.round(response.data.list[39].main.temp_min);
       let minSixTemp = document.querySelector(".daysixmintemp");
       minSixTemp.innerHTML = `${minDaySixTemp}°C`;
       let maxDaySixTemp = Math.round(response.data.list[39].main.temp_max);
       let maxSixTemp = document.querySelector(".daysixmaxtemp");
       maxSixTemp.innerHTML = `${maxDaySixTemp}°C`;
+      document
+        .querySelector(".daysiximage")
+        .setAttribute(
+          "src",
+          "http://openweathermap.org/img/w/" +
+            response.data.list[39].weather[0].icon +
+            ".png"
+        );
     });
 }
 // Current button function beggining
