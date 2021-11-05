@@ -10,18 +10,24 @@ if (currentMin < 10) {
 }
 hour.innerHTML = `${currentHour}:${currentMin}`;
 
-let date = document.querySelector(".currentday");
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let currentDay = days[now.getDay()];
-date.innerHTML = currentDay;
+function generalDay(dayNumber) {
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  return days[dayNumber];
+}
+
+function generalDate(date) {
+  let day = generalDay(date.getDay());
+  return day;
+}
+
 let root = `https://api.openweathermap.org`;
 
 function countrySubmit(event) {
@@ -39,6 +45,8 @@ function showTemperature(queryParams) {
   let apiUrl = `${root}/data/2.5/weather?&appid=${apiKey}&units=metric&${queryParams}`;
   axios.get(apiUrl).then(function (response) {
     console.log(response);
+    let date = document.querySelector(".currentday");
+    date.innerHTML = generalDate(new Date());
     let todayTemp = document.querySelector(".temp");
     todayTemp.innerHTML = Math.round(response.data.main.temp);
     let minCurrentTemp = Math.round(response.data.main.temp_min);
@@ -69,6 +77,53 @@ function showTemperature(queryParams) {
     console.log(sunset);
     console.log(sunrise);
   });
+  axios
+    .get(
+      `${root}/data/2.5/forecast?${queryParams}&appid=${apiKey}&units=metric`
+    )
+    .then(function (response) {
+      console.log(response);
+      // let dayone = response.data.list[1].dt_txt;
+      // let dateone = document.querySelector(".dayonename");
+      // dateone.innerHTML = generalDate(dayone);
+      // console.log(dayone);
+      let minDayOneTemp = Math.round(response.data.list[1].main.temp_min);
+      let minOneTemp = document.querySelector(".dayonemintemp");
+      minOneTemp.innerHTML = `${minDayOneTemp}°C`;
+      let maxDayOneTemp = Math.round(response.data.list[1].main.temp_max);
+      let maxOneTemp = document.querySelector(".dayonemaxtemp");
+      maxOneTemp.innerHTML = `${maxDayOneTemp}°C`;
+      let minDayTwoTemp = Math.round(response.data.list[9].main.temp_min);
+      let minTwoTemp = document.querySelector(".daytwomintemp");
+      minTwoTemp.innerHTML = `${minDayTwoTemp}°C`;
+      let maxDayTwoTemp = Math.round(response.data.list[9].main.temp_max);
+      let maxTwoTemp = document.querySelector(".daytwomaxtemp");
+      maxTwoTemp.innerHTML = `${maxDayTwoTemp}°C`;
+      let minDayThreeTemp = Math.round(response.data.list[17].main.temp_min);
+      let minThreeTemp = document.querySelector(".daythreemintemp");
+      minThreeTemp.innerHTML = `${minDayThreeTemp}°C`;
+      let maxDayThreeTemp = Math.round(response.data.list[17].main.temp_max);
+      let maxThreeTemp = document.querySelector(".daythreemaxtemp");
+      maxThreeTemp.innerHTML = `${maxDayThreeTemp}°C`;
+      let minDayFourTemp = Math.round(response.data.list[25].main.temp_min);
+      let minFourTemp = document.querySelector(".dayfourmintemp");
+      minFourTemp.innerHTML = `${minDayFourTemp}°C`;
+      let maxDayFourTemp = Math.round(response.data.list[25].main.temp_max);
+      let maxFourTemp = document.querySelector(".dayfourmaxtemp");
+      maxFourTemp.innerHTML = `${maxDayFourTemp}°C`;
+      let minDayFiveTemp = Math.round(response.data.list[33].main.temp_min);
+      let minFiveTemp = document.querySelector(".dayfivemintemp");
+      minFiveTemp.innerHTML = `${minDayFiveTemp}°C`;
+      let maxDayFiveTemp = Math.round(response.data.list[33].main.temp_max);
+      let maxFiveTemp = document.querySelector(".dayfivemaxtemp");
+      maxFiveTemp.innerHTML = `${maxDayFiveTemp}°C`;
+      let minDaySixTemp = Math.round(response.data.list[39].main.temp_min);
+      let minSixTemp = document.querySelector(".daysixmintemp");
+      minSixTemp.innerHTML = `${minDaySixTemp}°C`;
+      let maxDaySixTemp = Math.round(response.data.list[39].main.temp_max);
+      let maxSixTemp = document.querySelector(".daysixmaxtemp");
+      maxSixTemp.innerHTML = `${maxDaySixTemp}°C`;
+    });
 }
 // Current button function beggining
 function currentLocation(position) {
