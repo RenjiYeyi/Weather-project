@@ -141,6 +141,8 @@ function getCurrentPosition() {
 let button = document.querySelector(".currentPlace");
 button.addEventListener("click", getCurrentPosition); //Current button function ending
 
+showTemperature("q=Mexico City");
+
 // function celsiusChange(event) {
 //   event.preventDefault();
 //   let celsTemp = document.querySelector(".temp");
