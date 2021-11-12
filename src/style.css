@@ -2,7 +2,9 @@ body {
   font-family: "Montserrat", sans-serif;
   background-image: url("images/clear2.jpg");
   background-size: cover;
-  margin: 90px auto;
+  background-position: center;
+  height: 100%;
+  margin: 30px auto;
 }
 form {
   margin: 15px;
@@ -22,6 +24,7 @@ form {
   border: transparent;
   border-radius: 30px;
   margin: 10px;
+  color: #e3f6f5;
 }
 .searchsection {
   text-align: right;
@@ -54,9 +57,12 @@ h2 {
 }
 .conditions {
   margin: auto;
+  color: #41506b;
+  font-weight: 600;
 }
 .todayconditions {
   margin: auto;
+  color: #41506b;
 }
 .todayemoji {
   font-size: 70px;
