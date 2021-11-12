@@ -49,14 +49,14 @@ function showTemperature(queryParams) {
     date.innerHTML = generalDate(new Date());
     let todayTemp = document.querySelector(".temp");
     todayTemp.innerHTML = Math.round(response.data.main.temp);
-    let minCurrentTemp = Math.round(response.data.main.temp_min);
+    let minCurrentTemp = Math.floor(response.data.main.temp_min);
     let minTodatTemp = document.querySelector("#min-temp");
     minTodatTemp.innerHTML = `${minCurrentTemp}°C`;
     let maxCurrentTemp = Math.round(response.data.main.temp_max);
     let maxTodatTemp = document.querySelector("#max-temp");
     maxTodatTemp.innerHTML = `${maxCurrentTemp}°C`;
     let description = document.querySelector(".description");
-    description.innerHTML = response.data.weather[0].description;
+    description.innerHTML = response.data.weather[0].main;
     let currentHumidity = response.data.main.humidity;
     let todayHumidity = document.querySelector(".humiditydata");
     todayHumidity.innerHTML = `${currentHumidity}%`;
@@ -112,7 +112,7 @@ function showTemperature(queryParams) {
       let minDayTwoTemp = Math.round(response.data.list[9].main.temp_min);
       let minTwoTemp = document.querySelector(".daytwomintemp");
       minTwoTemp.innerHTML = `${minDayTwoTemp}°C`;
-      let maxDayTwoTemp = Math.round(response.data.list[9].main.temp_max);
+      let maxDayTwoTemp = Math.round(response.data.list[8].main.temp_max);
       let maxTwoTemp = document.querySelector(".daytwomaxtemp");
       maxTwoTemp.innerHTML = `${maxDayTwoTemp}°C`;
       document
@@ -126,7 +126,7 @@ function showTemperature(queryParams) {
       let minDayThreeTemp = Math.round(response.data.list[17].main.temp_min);
       let minThreeTemp = document.querySelector(".daythreemintemp");
       minThreeTemp.innerHTML = `${minDayThreeTemp}°C`;
-      let maxDayThreeTemp = Math.round(response.data.list[17].main.temp_max);
+      let maxDayThreeTemp = Math.round(response.data.list[16].main.temp_max);
       let maxThreeTemp = document.querySelector(".daythreemaxtemp");
       maxThreeTemp.innerHTML = `${maxDayThreeTemp}°C`;
       document
@@ -140,7 +140,7 @@ function showTemperature(queryParams) {
       let minDayFourTemp = Math.round(response.data.list[25].main.temp_min);
       let minFourTemp = document.querySelector(".dayfourmintemp");
       minFourTemp.innerHTML = `${minDayFourTemp}°C`;
-      let maxDayFourTemp = Math.round(response.data.list[25].main.temp_max);
+      let maxDayFourTemp = Math.round(response.data.list[24].main.temp_max);
       let maxFourTemp = document.querySelector(".dayfourmaxtemp");
       maxFourTemp.innerHTML = `${maxDayFourTemp}°C`;
       document
@@ -154,7 +154,7 @@ function showTemperature(queryParams) {
       let minDayFiveTemp = Math.round(response.data.list[33].main.temp_min);
       let minFiveTemp = document.querySelector(".dayfivemintemp");
       minFiveTemp.innerHTML = `${minDayFiveTemp}°C`;
-      let maxDayFiveTemp = Math.round(response.data.list[33].main.temp_max);
+      let maxDayFiveTemp = Math.round(response.data.list[32].main.temp_max);
       let maxFiveTemp = document.querySelector(".dayfivemaxtemp");
       maxFiveTemp.innerHTML = `${maxDayFiveTemp}°C`;
       document
@@ -168,7 +168,7 @@ function showTemperature(queryParams) {
       let minDaySixTemp = Math.round(response.data.list[39].main.temp_min);
       let minSixTemp = document.querySelector(".daysixmintemp");
       minSixTemp.innerHTML = `${minDaySixTemp}°C`;
-      let maxDaySixTemp = Math.round(response.data.list[39].main.temp_max);
+      let maxDaySixTemp = Math.round(response.data.list[38].main.temp_max);
       let maxSixTemp = document.querySelector(".daysixmaxtemp");
       maxSixTemp.innerHTML = `${maxDaySixTemp}°C`;
       document

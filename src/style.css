@@ -1,11 +1,15 @@
 body {
   font-family: "Montserrat", sans-serif;
-  background: linear-gradient(
-    178deg,
-    rgba(201, 234, 252, 0.51) 14.9%,
-    rgba(139, 192, 216, 0.73) 80%
-  );
+  background-image: url("images/clear2.jpg");
+  background-size: cover;
   margin: 90px auto;
+}
+.currentdata {
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(116, 117, 134, 0.37);
+  padding: 15px;
+  border: transparent;
+  border-radius: 30px;
 }
 .searchsection {
   text-align: right;
@@ -31,10 +35,16 @@ ul {
   color: #5c7aea;
 }
 h1 {
-  margin: 20px auto;
+  margin: 20px 15px;
 }
 h2 {
-  margin: 10px auto 30px auto;
+  margin: 10px 15px;
+}
+.conditions {
+  margin: auto;
+}
+.todayconditions {
+  margin: auto;
 }
 .todayemoji {
   font-size: 70px;
@@ -42,11 +52,12 @@ h2 {
 }
 .iconmessage {
   text-align: center;
+  margin: auto;
 }
 .todayTemp {
   font-size: 30px;
   font-weight: 500;
-  margin: 20px auto;
+  margin: auto;
 }
 .weeklyweather {
   text-align: center;
