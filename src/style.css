@@ -59,14 +59,14 @@ h2 {
   margin: auto;
   color: #41506b;
   font-weight: 600;
+  text-align: right;
 }
 .todayconditions {
   margin: auto;
   color: #41506b;
 }
-.todayemoji {
-  font-size: 70px;
-  margin: 25px auto;
+.todayimage {
+  width: 100px;
 }
 .iconmessage {
   text-align: center;

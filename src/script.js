@@ -8,7 +8,8 @@ let currentMin = now.getMinutes();
 if (currentMin < 10) {
   currentMin = "0" + currentMin;
 }
-hour.innerHTML = `${currentHour}:${currentMin}`;
+let currentTime = `${currentHour}:${currentMin}`;
+hour.innerHTML = currentTime;
 
 function generalDay(dayNumber) {
   let days = [
@@ -56,26 +57,42 @@ function showTemperature(queryParams) {
     let maxTodatTemp = document.querySelector("#max-temp");
     maxTodatTemp.innerHTML = `${maxCurrentTemp}°C`;
     let description = document.querySelector(".description");
-    description.innerHTML = response.data.weather[0].main;
+    let todayDescription = response.data.weather[0].main;
+    description.innerHTML = todayDescription;
     let currentHumidity = response.data.main.humidity;
     let todayHumidity = document.querySelector(".humiditydata");
     todayHumidity.innerHTML = `${currentHumidity}%`;
     let currentSpeed = response.data.wind.speed;
     let todaySpeed = document.querySelector(".winddata");
     todaySpeed.innerHTML = `${currentSpeed}km/hr`;
-
-    let unixSunrise = response.data.sys.sunrise;
-    let sunrise = new Date(unixSunrise * 1000);
+    // Sunrise & Sunset call
+    let sunriseTime = new Date(response.data.sys.sunrise * 1000);
+    let sunriseHour = sunriseTime.getHours();
+    if (sunriseHour < 10) {
+      sunriseHour = "0" + sunriseHour;
+    }
+    let sunriseMin = sunriseTime.getMinutes();
+    if (sunriseMin < 10) {
+      sunriseMin = "0" + sunriseMin;
+    }
     let todaySunrise = document.querySelector(".sunrisedata");
-    todaySunrise.innerHTML = moment(sunrise).format("LT");
-    let unixSunset = response.data.sys.sunset;
-    let sunset = new Date(unixSunset * 1000);
+    todaySunrise.innerHTML = `${sunriseHour}:${sunriseMin}`;
+
+    let sunsetTime = new Date(response.data.sys.sunset * 1000);
+    let sunsetHour = sunsetTime.getHours();
+    if (sunsetHour < 10) {
+      sunsetHour = "0" + sunsetHour;
+    }
+    let sunsetMin = sunsetTime.getMinutes();
+    if (sunsetMin < 10) {
+      sunsetMin = "0" + sunsetMin;
+    }
     let todaySunset = document.querySelector(".sunsetdata");
-    todaySunset.innerHTML = moment(sunset).format("LT");
+    todaySunset.innerHTML = `${sunsetHour}:${sunsetMin}`;
+    // Location Call
     let currentCountry = document.querySelector(".selectedcity");
     currentCountry.innerHTML = response.data.name;
-    console.log(sunset);
-    console.log(sunrise);
+    //Icon call
     document
       .querySelector(".todayimage")
       .setAttribute(
@@ -84,6 +101,18 @@ function showTemperature(queryParams) {
           response.data.weather[0].icon +
           ".png"
       );
+    //Background & Message change
+    // if (todayDescription == "Clear") {
+    //   document.body.style.backgroundImage = "url(`images/clear2.jpg`)";
+    //  } else if (todayDescription == "Clouds") {
+    //    document.body.style.backgroundImage = "url(`images/Cloudy.jpg`)";
+    //  } else if (todayDescription == "Rain") {
+    //    document.body.style.backgroundImage = "url(`images/Rain.jpg`)";
+    //  } else if (todayDescription == "Mist") {
+    //    document.body.style.backgroundImage = "url(`images/Mist.jpg`)";
+    //  } else {
+    //    document.body.style.backgroundImage = "url(`images/clear2.jpg`)";
+    //  }
     getForecast(response.data.coord);
   });
 }
@@ -93,22 +122,16 @@ function getForecast(coords) {
   let forecastApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&appid=${apiKey}&units=metric`;
   axios.get(forecastApiUrl).then(function (response) {
     console.log(response);
-    //Call of the Day
-    let forecast = response.data.daily;
-    forecast.forEach(function (forecastDay, index) {
-      if (index > 0 && index < 7) {
-        let forecastDate = new Date(forecastDay.dt * 1000);
-        console.log(forecastDate);
-        document.querySelectorAll(".day_name").innerHTML = forecastDate;
-      }
-    });
-    //Daily forecast call
     let minDayOneTemp = Math.round(response.data.daily[1].temp.min);
     let minOneTemp = document.querySelector(".dayonemintemp");
     minOneTemp.innerHTML = `${minDayOneTemp}°C`;
     let maxDayOneTemp = Math.round(response.data.daily[1].temp.max);
     let maxOneTemp = document.querySelector(".dayonemaxtemp");
     maxOneTemp.innerHTML = `${maxDayOneTemp}°C`;
+    let forecastDayOne = new Date(response.data.daily[1].dt * 1000);
+    console.log(forecastDayOne);
+    document.querySelector(".day_onename").innerHTML =
+      generalDate(forecastDayOne);
     document
       .querySelector(".dayoneimage")
       .setAttribute(
@@ -123,6 +146,10 @@ function getForecast(coords) {
     let maxDayTwoTemp = Math.round(response.data.daily[2].temp.max);
     let maxTwoTemp = document.querySelector(".daytwomaxtemp");
     maxTwoTemp.innerHTML = `${maxDayTwoTemp}°C`;
+    let forecastDayTwo = new Date(response.data.daily[2].dt * 1000);
+    console.log(forecastDayTwo);
+    document.querySelector(".day_twoname").innerHTML =
+      generalDate(forecastDayTwo);
     document
       .querySelector(".daytwoimage")
       .setAttribute(
@@ -137,6 +164,10 @@ function getForecast(coords) {
     let maxDayThreeTemp = Math.round(response.data.daily[3].temp.max);
     let maxThreeTemp = document.querySelector(".daythreemaxtemp");
     maxThreeTemp.innerHTML = `${maxDayThreeTemp}°C`;
+    let forecastDayThree = new Date(response.data.daily[3].dt * 1000);
+    console.log(forecastDayThree);
+    document.querySelector(".day_threename").innerHTML =
+      generalDate(forecastDayThree);
     document
       .querySelector(".daythreeimage")
       .setAttribute(
@@ -151,6 +182,10 @@ function getForecast(coords) {
     let maxDayFourTemp = Math.round(response.data.daily[4].temp.max);
     let maxFourTemp = document.querySelector(".dayfourmaxtemp");
     maxFourTemp.innerHTML = `${maxDayFourTemp}°C`;
+    let forecastDayFour = new Date(response.data.daily[4].dt * 1000);
+    console.log(forecastDayFour);
+    document.querySelector(".day_fourname").innerHTML =
+      generalDate(forecastDayFour);
     document
       .querySelector(".dayfourimage")
       .setAttribute(
@@ -165,6 +200,10 @@ function getForecast(coords) {
     let maxDayFiveTemp = Math.round(response.data.daily[5].temp.max);
     let maxFiveTemp = document.querySelector(".dayfivemaxtemp");
     maxFiveTemp.innerHTML = `${maxDayFiveTemp}°C`;
+    let forecastDayFive = new Date(response.data.daily[5].dt * 1000);
+    console.log(forecastDayFive);
+    document.querySelector(".day_fivename").innerHTML =
+      generalDate(forecastDayFive);
     document
       .querySelector(".dayfiveimage")
       .setAttribute(
@@ -179,6 +218,10 @@ function getForecast(coords) {
     let maxDaySixTemp = Math.round(response.data.daily[6].temp.max);
     let maxSixTemp = document.querySelector(".daysixmaxtemp");
     maxSixTemp.innerHTML = `${maxDaySixTemp}°C`;
+    let forecastDaySix = new Date(response.data.daily[6].dt * 1000);
+    console.log(forecastDaySix);
+    document.querySelector(".day_sixname").innerHTML =
+      generalDate(forecastDaySix);
     document
       .querySelector(".daysiximage")
       .setAttribute(
