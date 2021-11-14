@@ -49,7 +49,8 @@ function showTemperature(queryParams) {
     let date = document.querySelector(".currentday");
     date.innerHTML = generalDate(new Date());
     let todayTemp = document.querySelector(".temp");
-    todayTemp.innerHTML = Math.round(response.data.main.temp);
+    celsiusTemperature = response.data.main.temp;
+    todayTemp.innerHTML = Math.round(celsiusTemperature);
     let minCurrentTemp = Math.floor(response.data.main.temp_min);
     let minTodatTemp = document.querySelector("#min-temp");
     minTodatTemp.innerHTML = `${minCurrentTemp}°C`;
@@ -249,20 +250,30 @@ function getCurrentPosition() {
 let button = document.querySelector(".currentPlace");
 button.addEventListener("click", getCurrentPosition); //Current button function ending
 
+function celsiusChange(event) {
+  event.preventDefault();
+  let celsTemp = document.querySelector(".temp");
+  celsius.classList.add("active");
+  farenheit.classList.remove("active");
+  celsTemp.innerHTML = Math.round(celsiusTemperature);
+}
+
+function farenheitChange(event) {
+  event.preventDefault();
+  let farenhTemp = document.querySelector(".temp");
+  celsius.classList.remove("active");
+  farenheit.classList.add("active");
+  farenheitTemperature = Math.round(celsiusTemperature * 1.8 + 32);
+  farenhTemp.innerHTML = farenheitTemperature;
+}
+
+let celsiusTemperature = null;
+let farenheitTemperature = null;
+
+let celsius = document.querySelector("#celsius-link");
+celsius.addEventListener("click", celsiusChange);
+
+let farenheit = document.querySelector("#farenheit-link");
+farenheit.addEventListener("click", farenheitChange);
+
 showTemperature("q=Mexico City");
-
-// function celsiusChange(event) {
-//   event.preventDefault();
-//   let celsTemp = document.querySelector(".temp");
-//   celsTemp.innerHTML = "20";
-// }
-// let celsius = document.querySelector("#celsius-link");
-// celsius.addEventListener("click", celsiusChange);
-
-// function farenheitChange(event) {
-//   event.preventDefault();
-//   let farenhTemp = document.querySelector(".temp");
-//   farenhTemp.innerHTML = "68";
-// }
-// let farenheit = document.querySelector("#farenheit-link");
-// farenheit.addEventListener("click", farenheitChange);

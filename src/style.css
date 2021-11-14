@@ -102,3 +102,10 @@ h2 {
 .name {
   color: #ffffff;
 }
+.active {
+  color: #000000;
+  cursor: default;
+}
+.active:hover {
+  text-decoration: none;
+}
